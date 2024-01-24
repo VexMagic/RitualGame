@@ -8,6 +8,7 @@ public class AOE : MonoBehaviour
 
     [SerializeField] private float tickDamage;
     [SerializeField] private float tickFrequency;
+    //duration 0 = doesn't stop
     [SerializeField] private float duration;
     [SerializeField] private string tagToUseEffectOn;
     private float timer;
@@ -23,7 +24,9 @@ public class AOE : MonoBehaviour
     {
         if (TickTimer())
             UseEffect();
-        IncrementTTL();
+
+        if (duration > 0)
+            IncrementTTL();
     }
 
 
