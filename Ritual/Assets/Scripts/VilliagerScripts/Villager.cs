@@ -139,7 +139,7 @@ public class Villager : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, ritual.transform.position, movmentSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         
         if (collision.gameObject.CompareTag("Player"))
