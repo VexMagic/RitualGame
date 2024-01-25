@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rBody;
     [SerializeField] private float moveSpeed;
+    public int blood; //should move this to a seperated script "PlayerStats" or something
     private Vector2 movement;
 
     void FixedUpdate()
@@ -20,13 +21,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnMovement(InputValue value) //gets input from Unity Input System
     {
         movement = value.Get<Vector2>();
-        Debug.Log("moving(on)");
 
     }
 
     private void Move()
     {
         rBody.MovePosition(rBody.position + movement * Time.fixedDeltaTime * moveSpeed);
-        Debug.Log("moving");
     }
 }
