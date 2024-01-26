@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Villager : MonoBehaviour
@@ -10,7 +11,7 @@ public class Villager : MonoBehaviour
     // stun?
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
-    float movmentSpeed = 10f;
+    float movmentSpeed = 6f;
 
 
     [SerializeField] Transform player;
@@ -19,6 +20,8 @@ public class Villager : MonoBehaviour
     float idleTimeRemaining;
 
     float playerTargetRange = 10f;
+    float playerTargetShootingRange = 7f;
+    float meleeRange = 2f;
     float villagerTargetRange = 10f;
     float ritualTargetRange = 20f;
 
@@ -28,6 +31,14 @@ public class Villager : MonoBehaviour
     bool isHitByVooDoo = false;
     
     bool notAtive = false;
+
+    [SerializeField] bool ranged = true;
+
+    [SerializeField] GameObject projectileVillagerPrefab;
+    [SerializeField] float projectileSpeed = 5f;
+    [SerializeField] float shootCooldown = 3.5f; 
+
+    private float timeSinceLastShot = 0f;
 
     [SerializeField] CharacterManager characterManager;
     [SerializeField] ParticleSystem particleSystem;
@@ -127,21 +138,59 @@ public class Villager : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, agents[currentVillager].transform.position, movmentSpeed * Time.deltaTime);
     }
     void UpdatePlayerInRange()
-    {       
-        // move towards player
-        transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+    {
+        if (ranged)
+        {
+            float distance = Vector2.Distance(players[currentPlayer].transform.position, this.transform.position);
+            timeSinceLastShot += Time.deltaTime;
+            if (distance < playerTargetShootingRange && meleeRange < distance)
+            {
+                if (timeSinceLastShot >= shootCooldown)
+                {
+                    ShootProjectile();
+                    timeSinceLastShot = 0f;
+                }
+            }
+            else if(meleeRange > distance)
+            {
+                Debug.Log("attack");
+                // do attack
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+            }                        
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+        }
+        // move towards player        
     }
 
     void UpdateRitualInRange()
     {
+       
      
         // move towards ritual
         transform.position = Vector2.MoveTowards(transform.position, ritual.transform.position, movmentSpeed * Time.deltaTime);
     }
 
+    void ShootProjectile()
+    {
+        GameObject projectile = Instantiate(projectileVillagerPrefab, transform.position, Quaternion.identity);
+        Vector2 direction = (players[currentPlayer].transform.position - transform.position).normalized;
+
+        
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.velocity = direction * projectileSpeed;
+
+       
+    }
+
     //void OnCollisionEnter2D(Collision2D collision)
     //{
-        
+
     //    if (collision.gameObject.CompareTag("Player"))
     //    {
 
