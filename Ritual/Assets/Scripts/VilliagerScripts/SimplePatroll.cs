@@ -16,7 +16,7 @@ public class SimplePatroll : MonoBehaviour
 
     private void UpdatePatrol()
     {
-        Vector3 vectorToPatrolPoint = patrolPoints[currentPatrolPoint].position - transform.position;
+        Vector2 vectorToPatrolPoint = patrolPoints[currentPatrolPoint].position - transform.position;
 
         // reached patrol ponit
         if (vectorToPatrolPoint.magnitude <= patrolPointReachedThreshold)
@@ -25,9 +25,9 @@ public class SimplePatroll : MonoBehaviour
             currentPatrolPoint = (currentPatrolPoint + 1) % patrolPoints.Count;
         }
         // move towards the point
-        transform.position = Vector3.MoveTowards(transform.position, patrolPoints[currentPatrolPoint].position, movmentSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, patrolPoints[currentPatrolPoint].position, movmentSpeed * Time.deltaTime);
 
         // face the patrol point
-        transform.LookAt(patrolPoints[currentPatrolPoint], Vector3.up);
+        transform.LookAt(patrolPoints[currentPatrolPoint], Vector2.up);
     }
 }
