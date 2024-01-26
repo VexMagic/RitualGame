@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rBody;
     [SerializeField] private float moveSpeed;
-    public int blood; //should move this to a seperated script "PlayerStats" or something
     private Vector2 movement;
 
     void FixedUpdate()

@@ -114,5 +114,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 393df8e5ca81a15418f695e04b73af34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: -445392992627215895, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
   altarCol: {fileID: 2582393291187187813}

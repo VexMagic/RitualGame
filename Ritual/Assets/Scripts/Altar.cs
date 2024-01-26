@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Altar : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private PlayerStats player;
     [SerializeField] private CircleCollider2D altarCol;
     
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class Altar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (player.blood == 200)
+            if (player.blood >= 200)
                 Unlock();
             else
                 Debug.Log("NOT ENOUGH BLOOD");
