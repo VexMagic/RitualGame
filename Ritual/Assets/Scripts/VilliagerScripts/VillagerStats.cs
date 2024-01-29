@@ -7,6 +7,9 @@ public class VillagerStats : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
 
+    [Header("Events")]
+    [SerializeField] private GameObjectEventSO onDeath;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -22,9 +25,13 @@ public class VillagerStats : MonoBehaviour
         }
     }
 
-    void Die()
+    private void Die()
     {
-        
-        Destroy(gameObject);
+        onDeath.Invoke(this.gameObject);
+    }
+
+    public void ResetEnemy()
+    {
+        currentHealth = maxHealth;
     }
 }

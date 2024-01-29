@@ -16,6 +16,6 @@ public class DamageOnCollEnter : MonoBehaviour
     private void DealDamage(GameObject go)
     {
         Debug.Log("Damaged enemy");
-        go.GetComponent<Villager>().TakeDamage(damage);
+        go.GetComponent<VillagerStats>().TakeDamage(damage);
     }
 }
