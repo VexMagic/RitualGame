@@ -8,6 +8,10 @@ public class XPDrop : MonoBehaviour
     //how much xp the player gets
     [SerializeField] private int amount; 
     [SerializeField] private string playerTag;
+    [SerializeField] private GameObjectEventSO onPickup;
+
+    public int Amount { get { return amount; }  }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +20,7 @@ public class XPDrop : MonoBehaviour
         if(collision.CompareTag(playerTag))
         {
             //give player xp
-            XPEvent.OnXPPickUp.Invoke(this.gameObject);
+            onPickup.Invoke(this.gameObject);
         }
     }
 }

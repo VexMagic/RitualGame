@@ -5,15 +5,17 @@ using UnityEngine;
 public class DamageOnCollEnter : MonoBehaviour
 {
     [SerializeField] private string tagToDamage;
+    [SerializeField] private int damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(tagToDamage))
-            DealDamage();
+            DealDamage(collision.gameObject);
     }
 
-    private void DealDamage()
+    private void DealDamage(GameObject go)
     {
-        Debug.Log("damage");
+        Debug.Log("Damaged enemy");
+        go.GetComponent<Villager>().TakeDamage(damage);
     }
 }

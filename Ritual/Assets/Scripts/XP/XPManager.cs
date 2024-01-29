@@ -6,26 +6,26 @@ using UnityEngine;
 public class XPManager : MonoBehaviour
 {
     //Determines if an xp sohuld drop, finds out where and serves as communication center between the object pool and enemies
+    //currently every enemy kill spawns a xp drop
     public static XPManager instance;
     private ObjectPool objectPool;
     private List<GameObject> objects;
 
-    // get position
-    //spawn xp
-    //remove xp
-    //action to inform this that enemy has died
+    [Header("Events")]
+    [SerializeField] private GameObjectEventSO spawnXp;
+    [SerializeField] private GameObjectEventSO removeXP;
 
 
     private void OnEnable()
     {
-        XPEvent.OnXPPickUp += RemoveXP;
-        XPEvent.OnEnemyDied += SpawnXP;
+        spawnXp.Action += SpawnXP;
+        removeXP.Action += RemoveXP;
     }
 
     private void OnDisable()
     {
-        XPEvent.OnXPPickUp -= RemoveXP;
-        XPEvent.OnEnemyDied -= SpawnXP;
+        spawnXp.Action -= SpawnXP;
+        removeXP.Action -= RemoveXP;
     }
 
     private void Start()
@@ -36,23 +36,23 @@ public class XPManager : MonoBehaviour
 
 
 
-    private void SpawnXP(Vector3 position)
+    private void SpawnXP(GameObject go)
     {
         GameObject enemy = objectPool.GetPooledObject();
 
         if (enemy != null)
         {
-            enemy.transform.position = position;
+            enemy.transform.position = go.transform.position;
             enemy.SetActive(true);
         }
         else
             Debug.Log("Failed to spawn xp");
     }
 
-    public void RemoveXP(GameObject o)
+    public void RemoveXP(GameObject go)
     {
         //remove item from list
-        o.SetActive(false);
-        objects.Remove(o);
+        go.SetActive(false);
+        objects.Remove(go);
     }
 }

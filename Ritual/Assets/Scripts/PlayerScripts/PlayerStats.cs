@@ -6,14 +6,20 @@ public class PlayerStats : MonoBehaviour
 {
     public int blood; //should move this to a seperated script "PlayerStats" or something
 
-    void Start()
+    [SerializeField] private GameObjectEventSO OnXPIncrease;
+
+    private void OnEnable()
     {
-        
+        OnXPIncrease.Action += IncreaseXP;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        OnXPIncrease.Action -= IncreaseXP;
+    }
+
+    private void IncreaseXP(GameObject go)
+    {
+         blood += go.GetComponent<XPDrop>().Amount;
     }
 }

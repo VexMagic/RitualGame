@@ -26,6 +26,19 @@ public class EnemySpawnerObjectPool : MonoBehaviour
     public int randomSpawnRangeMin, randomSpawnRangeMax;
     Vector3 trueSpawnPoint;
 
+    [Header("Events")]
+    [SerializeField] private GameObjectEventSO onEnemyDeath;
+
+    private void OnEnable()
+    {
+        onEnemyDeath.Action += EnemyDeath;
+    }
+
+    private void OnDisable()
+    {
+        onEnemyDeath.Action -= EnemyDeath;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,7 +86,7 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                         enemy.transform.position = randomSpawn;
                         enemy.SetActive(true);
                         enemies.Add(enemy);
-                        XPEvent.OnEnemyDied(enemy.transform.position);
+                        enemy.GetComponent<Villager>().ResetEnemy();
                     }
                 }
             }
@@ -113,5 +126,10 @@ public class EnemySpawnerObjectPool : MonoBehaviour
         //    }
         //}
 
+    }
+
+    private void EnemyDeath(GameObject go)
+    {
+        go.SetActive(false);
     }
 }

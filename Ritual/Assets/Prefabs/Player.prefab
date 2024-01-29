@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: 200
+  OnXPIncrease: {fileID: 11400000, guid: 1155f109a6e75424787c1aaa06ea162f, type: 2}
 --- !u!1 &3375186868271734067
 GameObject:
   m_ObjectHideFlags: 0
