@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawnerObjectPool : MonoBehaviour
 {
     public static EnemySpawnerObjectPool Instance;
+    private ObjectPool objectPool;
 
     public GameObject[] spawnPoints;
     GameObject currentSpawnPoint;
@@ -28,6 +29,7 @@ public class EnemySpawnerObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectPool = GetComponent<ObjectPool>();
         TriggerWave();
 
     }
@@ -65,12 +67,13 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                 {
                     randomSpawn = new Vector2(Random.Range(randomSpawnRangeMin, randomSpawnRangeMax), Random.Range(randomSpawnRangeMin, randomSpawnRangeMax));
 
-                    GameObject enemy = ObjectPool.SharedInstance.GetPooledObject();
+                    GameObject enemy = objectPool.GetPooledObject();
                     if (enemy != null)
                     {
-                        enemy.transform.position = randomSpawn;                       
+                        enemy.transform.position = randomSpawn;
                         enemy.SetActive(true);
                         enemies.Add(enemy);
+                        XPEvent.OnEnemyDied(enemy.transform.position);
                     }
                 }
             }

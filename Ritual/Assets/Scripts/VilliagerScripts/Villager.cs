@@ -153,7 +153,8 @@ public class Villager : MonoBehaviour
     {
         // Add explotion
     
-        particleSystem.gameObject.SetActive(true);
+        //commenting out until explosion implemented
+        //particleSystem.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
