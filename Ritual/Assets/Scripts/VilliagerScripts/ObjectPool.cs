@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool SharedInstance;
+    //public ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectToPool;
     public int amountToPool;
 
     void Awake()
     {
-        SharedInstance = this;
+        //SharedInstance = this;
     }
 
     void Start()
     {
         pooledObjects = new List<GameObject>();
         GameObject tmp;
-        for (int i = 0; i < amountToPool; i++)
-        {
-            tmp = Instantiate(objectToPool);
-            tmp.SetActive(false);
-            pooledObjects.Add(tmp);
-        }
+
+            for (int i = 0; i < amountToPool; i++)
+            {
+                tmp = Instantiate(objectToPool);
+                tmp.SetActive(false);
+                pooledObjects.Add(tmp);
+            }
     }
     void Update()
     {
-        
+
     }
 
     public GameObject GetPooledObject()
@@ -39,6 +40,8 @@ public class ObjectPool : MonoBehaviour
                 return pooledObjects[i];
             }
         }
+
+        Debug.LogWarning("No valid object could be found");
         return null;
     }
 }

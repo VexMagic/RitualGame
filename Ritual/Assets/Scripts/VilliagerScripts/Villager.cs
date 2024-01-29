@@ -34,6 +34,13 @@ public class Villager : MonoBehaviour
     private List<GameObject> players = new List<GameObject>();
     private List<GameObject> agents = new List<GameObject>();
 
+    [Header("Health")]
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+
+    [Header("Events")]
+    [SerializeField] private GameObjectEventSO onDeath;
+
     private void Awake()
     {
         GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
@@ -44,7 +51,8 @@ public class Villager : MonoBehaviour
     }
     void Start()
     {
-       
+        currentHealth = maxHealth;
+
         theTree = new DT(
         new DecisionBranch
         {
@@ -153,7 +161,8 @@ public class Villager : MonoBehaviour
     {
         // Add explotion
     
-        particleSystem.gameObject.SetActive(true);
+        //commenting out until explosion implemented
+        //particleSystem.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
@@ -166,5 +175,22 @@ public class Villager : MonoBehaviour
         {
         }
 
+    }
+
+    private void Die()
+    {
+        onDeath.Invoke(this.gameObject);
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if(currentHealth <= 0)
+            Die();
+    }
+
+    public void ResetEnemy()
+    {
+        currentHealth = maxHealth;
     }
 }

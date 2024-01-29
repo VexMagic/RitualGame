@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        rBody.MovePosition(rBody.position + movement * Time.fixedDeltaTime * moveSpeed);
+        //rBody.MovePosition(rBody.position + movement * Time.fixedDeltaTime * moveSpeed);
+        Vector3 move = movement * Time.fixedDeltaTime * moveSpeed;
+        transform.position += move;
     }
 }

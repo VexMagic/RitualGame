@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawnerObjectPool : MonoBehaviour
 {
     public static EnemySpawnerObjectPool Instance;
+    private ObjectPool objectPool;
 
     public GameObject[] spawnPoints;
     GameObject currentSpawnPoint;
@@ -25,9 +26,23 @@ public class EnemySpawnerObjectPool : MonoBehaviour
     public int randomSpawnRangeMin, randomSpawnRangeMax;
     Vector3 trueSpawnPoint;
 
+    [Header("Events")]
+    [SerializeField] private GameObjectEventSO onEnemyDeath;
+
+    private void OnEnable()
+    {
+        onEnemyDeath.Action += EnemyDeath;
+    }
+
+    private void OnDisable()
+    {
+        onEnemyDeath.Action -= EnemyDeath;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        objectPool = GetComponent<ObjectPool>();
         TriggerWave();
 
     }
@@ -65,12 +80,13 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                 {
                     randomSpawn = new Vector2(Random.Range(randomSpawnRangeMin, randomSpawnRangeMax), Random.Range(randomSpawnRangeMin, randomSpawnRangeMax));
 
-                    GameObject enemy = ObjectPool.SharedInstance.GetPooledObject();
+                    GameObject enemy = objectPool.GetPooledObject();
                     if (enemy != null)
                     {
-                        enemy.transform.position = randomSpawn;                       
+                        enemy.transform.position = randomSpawn;
                         enemy.SetActive(true);
                         enemies.Add(enemy);
+                        enemy.GetComponent<Villager>().ResetEnemy();
                     }
                 }
             }
@@ -110,5 +126,10 @@ public class EnemySpawnerObjectPool : MonoBehaviour
         //    }
         //}
 
+    }
+
+    private void EnemyDeath(GameObject go)
+    {
+        go.SetActive(false);
     }
 }
