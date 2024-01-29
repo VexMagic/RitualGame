@@ -14,12 +14,14 @@ public class EnemySpawnerObjectPool : MonoBehaviour
 
     private bool spawnAnEnemy;
     public GameObject player;
+    public GameObject[] altars;
+
     public GameObject[] enemyTypes;
     public float minSpawnTime, maxSpawnTime, spawnRateIncreaseInterval;
     public float spawnTimer;
     public bool canSpawn;
 
-    public int spawnDistanceToPlayer, spawnDistanceToEnemy;
+    public int spawnDistanceToPlayer, spawnDistanceToEnemy, spawnDistanceToAltar;
     public int enemyPerSpawn;
 
     Vector3 randomSpawn;
@@ -65,21 +67,27 @@ public class EnemySpawnerObjectPool : MonoBehaviour
         spawnAnEnemy = true;
         currentSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         float timeBetweenSpawns = Random.Range(minSpawnTime, maxSpawnTime);
-        trueSpawnPoint = currentSpawnPoint.transform.position - randomSpawn;
 
         if (canSpawn)
         {
-            if (Vector2.Distance(player.transform.position, trueSpawnPoint) < spawnDistanceToPlayer)
+            for (int i = 0; i < enemyPerSpawn; i++)
             {
-                spawnAnEnemy = false;
-            }
+                randomSpawn = new Vector2(Random.Range(randomSpawnRangeMin, randomSpawnRangeMax), Random.Range(randomSpawnRangeMin, randomSpawnRangeMax));
 
-            if (spawnAnEnemy)
-            {           
-                for (int i = 0; i < enemyPerSpawn; i++)
+                for (int j = 0; j < altars.Length; j++)
                 {
-                    randomSpawn = new Vector2(Random.Range(randomSpawnRangeMin, randomSpawnRangeMax), Random.Range(randomSpawnRangeMin, randomSpawnRangeMax));
+                    if (Vector2.Distance(altars[j].transform.position, randomSpawn) < spawnDistanceToAltar)
+                    {
+                        spawnAnEnemy = false;
+                    }
 
+                    if (Vector2.Distance(player.transform.position, randomSpawn) < spawnDistanceToPlayer)
+                    {
+                        spawnAnEnemy = false;
+                    }
+                }
+                if (spawnAnEnemy)
+                {
                     GameObject enemy = objectPool.GetPooledObject();
                     if (enemy != null)
                     {
@@ -89,12 +97,12 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                         enemy.GetComponent<Villager>().ResetEnemy();
                     }
                 }
-            }
-            else
-            {
-                timeBetweenSpawns = minSpawnTime / 2;
-            }
+                else
+                {
+                    timeBetweenSpawns = minSpawnTime / 2;
+                }
 
+            }
             Invoke("SpawnEnemy", timeBetweenSpawns);
 
         }

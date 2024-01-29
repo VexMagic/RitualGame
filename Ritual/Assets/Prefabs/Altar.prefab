@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8584348300108334016}
   - component: {fileID: 2582393291187187812}
   - component: {fileID: 799859338230944924}
-  - component: {fileID: 8565075680923931355}
+  - component: {fileID: 1093756364984192800}
   m_Layer: 0
   m_Name: Altar
   m_TagString: Untagged
@@ -135,7 +135,7 @@ PolygonCollider2D:
       - {x: -3.84375, y: -0.66360396}
       - {x: -0.72526395, y: -3.750297}
       - {x: 0.78784484, y: -3.7481618}
---- !u!95 &8565075680923931355
+--- !u!95 &1093756364984192800
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 523586848247703999}
   - component: {fileID: 5561470819252409602}
-  - component: {fileID: 1043990285159890752}
+  - component: {fileID: 3420080547845251976}
   m_Layer: 0
   m_Name: WaterSprite
   m_TagString: Untagged
@@ -241,7 +241,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1043990285159890752
+--- !u!95 &3420080547845251976
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
