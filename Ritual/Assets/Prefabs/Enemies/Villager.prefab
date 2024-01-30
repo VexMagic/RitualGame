@@ -102,9 +102,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleMinTime: 5
   idleMaxTime: 10
-  movmentSpeed: 2
-  player: {fileID: 0}
+  player: {fileID: 3375186866733616373, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
   ritual: {fileID: 5919982865455566461, guid: bce83c12148d73a499818bfe5890740b, type: 3}
+  ranged: 1
+  projectileVillagerPrefab: {fileID: 0}
+  projectileSpeed: 5
+  shootCooldown: 3.5
   characterManager: {fileID: 0}
   particleSystem: {fileID: 0}
 --- !u!114 &-5299814823627667607
