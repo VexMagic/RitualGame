@@ -28,7 +28,7 @@ public class Villager : MonoBehaviour
     int currentVillager;
     int currentPlayer;
 
-    bool isHitByVooDoo = false;
+    [SerializeField] bool isHitByVooDoo = false;
 
     bool notAtive = false;
 
