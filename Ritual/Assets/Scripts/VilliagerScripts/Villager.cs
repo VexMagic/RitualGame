@@ -32,7 +32,7 @@ public class Villager : MonoBehaviour
 
     bool notAtive = false;
 
-    [SerializeField] bool ranged = true;
+    [SerializeField] bool ranged = false;
 
     [SerializeField] GameObject projectileVillagerPrefab;
     [SerializeField] float projectileSpeed = 5f;

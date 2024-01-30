@@ -105,7 +105,7 @@ MonoBehaviour:
   player: {fileID: 3375186866733616373, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
   ritual: {fileID: 5919982865455566461, guid: bce83c12148d73a499818bfe5890740b, type: 3}
   ranged: 1
-  projectileVillagerPrefab: {fileID: 0}
+  projectileVillagerPrefab: {fileID: 4552183499369388687, guid: ffda4cb060b658a499f66d1786261257, type: 3}
   projectileSpeed: 5
   shootCooldown: 3.5
   characterManager: {fileID: 0}
