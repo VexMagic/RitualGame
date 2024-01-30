@@ -5,12 +5,9 @@ using UnityEngine;
 public class Villager : MonoBehaviour
 {
     DT theTree;
-
-   
-    // stun?
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
-    [SerializeField] float movmentSpeed = 2f;
+    float movmentSpeed = 6f;
 
 
     [SerializeField] Transform player;
@@ -19,6 +16,8 @@ public class Villager : MonoBehaviour
     float idleTimeRemaining;
 
     float playerTargetRange = 10f;
+    float playerTargetShootingRange = 7f;
+    float meleeRange = 2f;
     float villagerTargetRange = 10f;
     float ritualTargetRange = 20f;
 
@@ -26,8 +25,16 @@ public class Villager : MonoBehaviour
     int currentPlayer;
 
     bool isHitByVooDoo = false;
-    
+
     bool notAtive = false;
+
+    [SerializeField] bool ranged = true;
+
+    [SerializeField] GameObject projectileVillagerPrefab;
+    [SerializeField] float projectileSpeed = 5f;
+    [SerializeField] float shootCooldown = 3.5f;
+
+    private float timeSinceLastShot = 0f;
 
     [SerializeField] CharacterManager characterManager;
     [SerializeField] ParticleSystem particleSystem;
