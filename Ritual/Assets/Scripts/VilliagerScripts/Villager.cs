@@ -125,11 +125,39 @@ public class Villager : MonoBehaviour
         // Attack other villeger
         transform.position = Vector2.MoveTowards(transform.position, agents[currentVillager].transform.position, movmentSpeed * Time.deltaTime);
     }
+
+  
     void UpdatePlayerInRange()
-    {       
-        // move towards player
-        transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+    {
+        if (ranged)
+        {
+            float distance = Vector2.Distance(players[currentPlayer].transform.position, this.transform.position);
+            timeSinceLastShot += Time.deltaTime;
+            if (distance < playerTargetShootingRange && meleeRange < distance)
+            {
+                if (timeSinceLastShot >= shootCooldown)
+                {
+                    ShootProjectile();
+                    timeSinceLastShot = 0f;
+                }
+            }
+            else if (meleeRange > distance)
+            {
+                Debug.Log("attack");
+                // do attack
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+        }
+        // move towards player        
     }
+    
 
     void UpdateRitualInRange()
     {
