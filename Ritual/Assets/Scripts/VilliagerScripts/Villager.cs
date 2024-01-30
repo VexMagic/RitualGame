@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Villager : MonoBehaviour
 {
     DT theTree;
+
+
+    // stun?
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
     float movmentSpeed = 6f;
@@ -51,15 +55,16 @@ public class Villager : MonoBehaviour
     }
     void Start()
     {
+
         theTree = new DT(
         new DecisionBranch
         {
             decisionFunction = () => IsVooDoo(),
-            trueNode = new DecisionLeaf { action = UpdateAttackVillgare},
+            trueNode = new DecisionLeaf { action = UpdateAttackVillgare },
             falseNode = new DecisionBranch
             {
                 decisionFunction = () => IsPlayerInRange(),
-                trueNode = new DecisionLeaf { action = UpdatePlayerInRange  },
+                trueNode = new DecisionLeaf { action = UpdatePlayerInRange },
                 //falseNode = new DecisionLeaf { action = UpdateStateIdle }
                 falseNode = new DecisionBranch
                 {
@@ -83,9 +88,14 @@ public class Villager : MonoBehaviour
         theTree.MakeDecision();
     }
 
+    public void AtivateVodo(bool active)
+    {
+        isHitByVooDoo = active;
+    }
+
     bool IsVooDoo()
     {
-        if(isHitByVooDoo)
+        if (isHitByVooDoo)
         {
             for (int i = 0; i < agents.Count; i++)
             {
@@ -132,8 +142,6 @@ public class Villager : MonoBehaviour
         // Attack other villeger
         transform.position = Vector2.MoveTowards(transform.position, agents[currentVillager].transform.position, movmentSpeed * Time.deltaTime);
     }
-
-  
     void UpdatePlayerInRange()
     {
         if (ranged)
@@ -164,18 +172,30 @@ public class Villager : MonoBehaviour
         }
         // move towards player        
     }
-    
 
     void UpdateRitualInRange()
     {
-     
+
+
         // move towards ritual
         transform.position = Vector2.MoveTowards(transform.position, ritual.transform.position, movmentSpeed * Time.deltaTime);
     }
 
+    void ShootProjectile()
+    {
+        GameObject projectile = Instantiate(projectileVillagerPrefab, transform.position, Quaternion.identity);
+        Vector2 direction = (players[currentPlayer].transform.position - transform.position).normalized;
+
+
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.velocity = direction * projectileSpeed;
+
+
+    }
+
     //void OnCollisionEnter2D(Collision2D collision)
     //{
-        
+
     //    if (collision.gameObject.CompareTag("Player"))
     //    {
 
@@ -186,15 +206,14 @@ public class Villager : MonoBehaviour
     void UpdateExplotion()
     {
         // Add explotion
-    
-        //commenting out until explosion implemented
-        //particleSystem.gameObject.SetActive(true);
+
+        particleSystem.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
     //Stun?
     void UpdateStateIdle()
-    {      
+    {
         //update idle time remaining
         idleTimeRemaining -= Time.deltaTime;
         if (idleTimeRemaining <= 0)
