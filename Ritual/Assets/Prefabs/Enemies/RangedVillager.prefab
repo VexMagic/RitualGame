@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8089215464297079529}
   - component: {fileID: 5478611918102267863}
   m_Layer: 0
-  m_Name: Villager
+  m_Name: RangedVillager
   m_TagString: Villager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
