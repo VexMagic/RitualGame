@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DamagingAOE : AOE
 {
-    protected override void Effect(GameObject obj)
+    protected override void Effect(GameObject go)
     {
-        base.Effect(obj);
-        Debug.Log("damage " + obj.name);
+        base.Effect(go);
+        go.GetComponent<VillagerStats>().TakeDamage(tickDamage);
     }
 }

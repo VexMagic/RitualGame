@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 4906895257503548892}
   - component: {fileID: 4906895257503548893}
   - component: {fileID: 4906895257503548894}
+  - component: {fileID: 6648650819750978078}
   m_Layer: 0
   m_Name: VoodooDollAOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4906895257503548450
 Transform:
   m_ObjectHideFlags: 0
@@ -101,7 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tickDamage: 2
   tickFrequency: 1
-  duration: 0
   tagToUseEffectOn: test
   stunDuration: 0
 --- !u!50 &4906895257503548893
@@ -151,3 +151,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6648650819750978078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906895257503548895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c269ada58aebe84d9f893174b75f0b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDirectionChange: {fileID: 0}

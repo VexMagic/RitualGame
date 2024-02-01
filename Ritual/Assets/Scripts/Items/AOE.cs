@@ -6,27 +6,23 @@ using UnityEngine;
 public class AOE : MonoBehaviour
 {
 
-    [SerializeField] private float tickDamage;
+    [SerializeField] protected int tickDamage;
     [SerializeField] private float tickFrequency;
     //duration 0 = doesn't stop
-    [SerializeField] private float duration;
     [SerializeField] private string tagToUseEffectOn;
     private float timer;
-    private float timeAlive;
     private List<GameObject> gameObjects;
 
     private void Start()
     {
+        Debug.Log("Start");
         gameObjects = new List<GameObject>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (TickTimer())
             UseEffect();
-
-        if (duration > 0)
-            IncrementTTL();
     }
 
 
@@ -41,9 +37,12 @@ public class AOE : MonoBehaviour
 
     private void UseEffect()
     {
+        if (gameObjects.Count <= 0)
+            return;
         foreach (GameObject obj in gameObjects)
         {
-            Effect(obj);
+            if (obj != null)
+                Effect(obj);
         }
     }
 
@@ -59,17 +58,7 @@ public class AOE : MonoBehaviour
         return false;
     }
 
-    private void IncrementTTL()
-    {
-        timeAlive += Time.deltaTime;
-        if (timeAlive >= duration)
-            OnTTLEnd();
-    }
 
-    protected virtual void OnTTLEnd()
-    {
-        Destroy(gameObject);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

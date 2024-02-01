@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rBody: {fileID: 3375186866733616369}
   moveSpeed: 3
+  OnDirectionChange: {fileID: 11400000, guid: 0bf5bdd667884094593ad8c6fe626073, type: 2}
 --- !u!50 &3375186866733616369
 Rigidbody2D:
   serializedVersion: 4
