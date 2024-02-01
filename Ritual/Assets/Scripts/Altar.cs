@@ -5,7 +5,7 @@ using UnityEngine;
 public class Altar : MonoBehaviour
 {
     [SerializeField] private PlayerStats player;
-    [SerializeField] private CircleCollider2D altarCol;
+    [SerializeField] private SpriteRenderer water;
     
     // Start is called before the first frame update
     void Start()
@@ -22,18 +22,19 @@ public class Altar : MonoBehaviour
     void Unlock()
     {
         Debug.Log("Unlocked!");
+        water.color = Color.red;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             if (player.blood >= 200)
                 Unlock();
             else
                 Debug.Log("NOT ENOUGH BLOOD");
         }
-
     }
 
 }
