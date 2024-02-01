@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae0e9f3380566c46996d28ec573260e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateEvent: {fileID: 11400000, guid: 73d4e740fa75d864fad2451db3020dc5, type: 2}
   attackFrequency: 3
-  attackRange: 0
+  attackRange: 20
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   projectileSpawnpoint: {fileID: 4037947188759158073}
   prefab: {fileID: 2176335183294700459, guid: 35c19971c20a7cf4c936a4486d61a14e, type: 3}

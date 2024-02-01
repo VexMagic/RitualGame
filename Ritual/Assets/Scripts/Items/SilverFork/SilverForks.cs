@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SilverForks : MonoBehaviour
+public class SilverForks : Attack
 {
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Transform rotationCenter;
@@ -11,10 +11,25 @@ public class SilverForks : MonoBehaviour
     [SerializeField] private GameObject fork;
     [SerializeField] private int numForks;
     [SerializeField] private float distance;
+    private List<GameObject> forks;
 
     private void Start()
     {
+        forks = new List<GameObject>();
         SpawnForks();
+        InactivateForks();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        activateEvent.Action += ActivateForks;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        activateEvent.Action -= ActivateForks;
     }
 
     private void Rotate()
@@ -24,6 +39,9 @@ public class SilverForks : MonoBehaviour
 
     private void Update()
     {
+        if(!AttackActive)
+            return;
+
         Rotate();
     }
 
@@ -48,10 +66,27 @@ public class SilverForks : MonoBehaviour
     {
         GameObject newFork = Instantiate(fork, transform);
         newFork.transform.position = transform.position + CalculateSpawnPosition(rot);
+        forks.Add(newFork);
     }
 
     private Vector3 CalculateSpawnPosition(float rotAngle)
     {
         return new Vector3(Mathf.Cos(Mathf.Deg2Rad * rotAngle) * distance, Mathf.Sin(Mathf.Deg2Rad * rotAngle) * distance, 0);
+    }
+
+    private void ActivateForks()
+    {
+        foreach(GameObject fork in forks)
+        {
+            fork.SetActive(true);
+        }
+    }
+
+    private void InactivateForks()
+    {
+        foreach (GameObject fork in forks)
+        {
+            fork.SetActive(false);
+        }
     }
 }

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ebbfcd868081d49be58b476396819f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activateEvent: {fileID: 11400000, guid: 589d109c72d5d93438b83bdd338621ba, type: 2}
   rotationSpeed: 250
   rotationCenter: {fileID: 5159235252429985029}
   fork: {fileID: 8805535969991038833, guid: e35e716345bebe44b95be6e39ee1e021, type: 3}

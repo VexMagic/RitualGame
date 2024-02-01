@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AOE : MonoBehaviour
+public class AOE : Attack
 {
 
     [SerializeField] protected int tickDamage;
@@ -21,6 +21,8 @@ public class AOE : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (AttackActive)
+            return;
         if (TickTimer())
             UseEffect();
     }
@@ -65,7 +67,6 @@ public class AOE : MonoBehaviour
     {
         if (collision.CompareTag(tagToUseEffectOn))
         {
-            Debug.Log(collision.name + " entered");
             gameObjects.Add(collision.gameObject);
         }
     }
@@ -74,7 +75,6 @@ public class AOE : MonoBehaviour
     {
         if (collision.CompareTag(tagToUseEffectOn))
         {
-            Debug.Log(collision.name + " exited");
             gameObjects.Remove(collision.gameObject);
         }
     }
