@@ -39,10 +39,11 @@ public class AOE : MonoBehaviour
     {
         if (gameObjects.Count <= 0)
             return;
-        foreach (GameObject obj in gameObjects)
+
+        for(int i = 0; i < gameObjects.Count; i++)
         {
-            if (obj != null)
-                Effect(obj);
+            if (gameObjects[i] != null)
+                Effect(gameObjects[i]);
         }
     }
 
