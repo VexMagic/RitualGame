@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ObjectStats : MonoBehaviour
@@ -28,5 +29,6 @@ public class ObjectStats : MonoBehaviour
     public virtual void Death()
     {
         Debug.Log("Death");
+        SceneManager.LoadScene(1);
     }
 }
