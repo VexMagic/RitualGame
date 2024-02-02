@@ -322,9 +322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee01bacd90e58aa4a963d0ec250075bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blood: 200
-  maxHealth: 100
+  maxHealth: 10
   healthBar: {fileID: 8064533932975630600}
+  blood: 200
   OnXPIncrease: {fileID: 11400000, guid: 1155f109a6e75424787c1aaa06ea162f, type: 2}
 --- !u!1 &3375186868271734067
 GameObject:

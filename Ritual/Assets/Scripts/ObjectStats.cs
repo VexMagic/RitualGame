@@ -20,7 +20,7 @@ public class ObjectStats : MonoBehaviour
     {
         health -= damage;
         healthBar.value = (float)health / (float)maxHealth;
-        if (health < 0)
+        if (health <= 0)
         {
             Death();
         }
