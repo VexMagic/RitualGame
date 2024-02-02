@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Villager : MonoBehaviour
 {
     DT theTree;
 
-   
+
     // stun?
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
-    [SerializeField] float movmentSpeed = 2f;
+    float movmentSpeed = 6f;
 
 
     [SerializeField] Transform player;
@@ -19,27 +20,30 @@ public class Villager : MonoBehaviour
     float idleTimeRemaining;
 
     float playerTargetRange = 10f;
+    float playerTargetShootingRange = 7f;
+    float meleeRange = 2f;
     float villagerTargetRange = 10f;
     float ritualTargetRange = 20f;
 
     int currentVillager;
     int currentPlayer;
 
-    bool isHitByVooDoo = false;
-    
+    [SerializeField] bool isHitByVooDoo = false;
+
     bool notAtive = false;
+
+    [SerializeField] bool ranged = false;
+
+    [SerializeField] GameObject projectileVillagerPrefab;
+    [SerializeField] float projectileSpeed = 5f;
+    [SerializeField] float shootCooldown = 3.5f;
+
+    private float timeSinceLastShot = 0f;
 
     [SerializeField] CharacterManager characterManager;
     [SerializeField] ParticleSystem particleSystem;
     private List<GameObject> players = new List<GameObject>();
     private List<GameObject> agents = new List<GameObject>();
-
-    [Header("Health")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
-
-    [Header("Events")]
-    [SerializeField] private GameObjectEventSO onDeath;
 
     private void Awake()
     {
@@ -51,17 +55,16 @@ public class Villager : MonoBehaviour
     }
     void Start()
     {
-        currentHealth = maxHealth;
 
         theTree = new DT(
         new DecisionBranch
         {
             decisionFunction = () => IsVooDoo(),
-            trueNode = new DecisionLeaf { action = UpdateAttackVillgare},
+            trueNode = new DecisionLeaf { action = UpdateAttackVillgare },
             falseNode = new DecisionBranch
             {
                 decisionFunction = () => IsPlayerInRange(),
-                trueNode = new DecisionLeaf { action = UpdatePlayerInRange  },
+                trueNode = new DecisionLeaf { action = UpdatePlayerInRange },
                 //falseNode = new DecisionLeaf { action = UpdateStateIdle }
                 falseNode = new DecisionBranch
                 {
@@ -85,9 +88,14 @@ public class Villager : MonoBehaviour
         theTree.MakeDecision();
     }
 
+    public void AtivateVodo(bool active)
+    {
+        isHitByVooDoo = active;
+    }
+
     bool IsVooDoo()
     {
-        if(isHitByVooDoo)
+        if (isHitByVooDoo)
         {
             for (int i = 0; i < agents.Count; i++)
             {
@@ -135,21 +143,59 @@ public class Villager : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, agents[currentVillager].transform.position, movmentSpeed * Time.deltaTime);
     }
     void UpdatePlayerInRange()
-    {       
-        // move towards player
-        transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+    {
+        if (ranged)
+        {
+            float distance = Vector2.Distance(players[currentPlayer].transform.position, this.transform.position);
+            timeSinceLastShot += Time.deltaTime;
+            if (distance < playerTargetShootingRange && meleeRange < distance)
+            {
+                if (timeSinceLastShot >= shootCooldown)
+                {
+                    ShootProjectile();
+                    timeSinceLastShot = 0f;
+                }
+            }
+            else if (meleeRange > distance)
+            {
+                Debug.Log("attack");
+                // do attack
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);
+        }
+        // move towards player        
     }
 
     void UpdateRitualInRange()
     {
-     
+
+
         // move towards ritual
         transform.position = Vector2.MoveTowards(transform.position, ritual.transform.position, movmentSpeed * Time.deltaTime);
     }
 
+    void ShootProjectile()
+    {
+        GameObject projectile = Instantiate(projectileVillagerPrefab, transform.position, Quaternion.identity);
+        Vector2 direction = (players[currentPlayer].transform.position - transform.position).normalized;
+
+
+        Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
+        projectileRb.velocity = direction * projectileSpeed;
+
+
+    }
+
     //void OnCollisionEnter2D(Collision2D collision)
     //{
-        
+
     //    if (collision.gameObject.CompareTag("Player"))
     //    {
 
@@ -160,37 +206,19 @@ public class Villager : MonoBehaviour
     void UpdateExplotion()
     {
         // Add explotion
-    
-        //commenting out until explosion implemented
-        //particleSystem.gameObject.SetActive(true);
+
+        particleSystem.gameObject.SetActive(true);
         this.gameObject.SetActive(false);
     }
 
     //Stun?
     void UpdateStateIdle()
-    {      
+    {
         //update idle time remaining
         idleTimeRemaining -= Time.deltaTime;
         if (idleTimeRemaining <= 0)
         {
         }
 
-    }
-
-    private void Die()
-    {
-        onDeath.Invoke(this.gameObject);
-    }
-
-    public void TakeDamage(int damageAmount)
-    {
-        currentHealth -= damageAmount;
-        if(currentHealth <= 0)
-            Die();
-    }
-
-    public void ResetEnemy()
-    {
-        currentHealth = maxHealth;
     }
 }

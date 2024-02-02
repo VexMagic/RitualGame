@@ -94,7 +94,7 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                         enemy.transform.position = randomSpawn;
                         enemy.SetActive(true);
                         enemies.Add(enemy);
-                        enemy.GetComponent<Villager>().ResetEnemy();
+                        enemy.GetComponent<VillagerStats>().ResetEnemy();
                     }
                 }
                 else
