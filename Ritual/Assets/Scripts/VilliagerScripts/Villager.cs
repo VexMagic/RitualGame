@@ -11,7 +11,9 @@ public class Villager : MonoBehaviour
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
     [SerializeField] float movmentSpeed = 2f;
-
+    [SerializeField] int damage = 1;
+    [SerializeField] float attacksPerSecond = 0.5f;
+    private float attackTimer;
 
     [SerializeField] Transform player;
     [SerializeField] Transform ritual;
@@ -33,6 +35,8 @@ public class Villager : MonoBehaviour
     [SerializeField] ParticleSystem particleSystem;
     private List<GameObject> players = new List<GameObject>();
     private List<GameObject> agents = new List<GameObject>();
+
+    private List<ObjectStats> attackingTargets = new List<ObjectStats>();
 
     private void Awake()
     {
@@ -73,7 +77,23 @@ public class Villager : MonoBehaviour
         if (notAtive)
             return;
 
+        AttackTargets();
+
         theTree.MakeDecision();
+    }
+
+    private void AttackTargets()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attacksPerSecond && attackingTargets.Count != 0)
+        {
+            attackTimer = 0;
+
+            foreach (var target in attackingTargets)
+            {
+                target.TakeDamage(damage);
+            }
+        }
     }
 
     bool IsVooDoo()
@@ -166,5 +186,24 @@ public class Villager : MonoBehaviour
         {
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ritual"))
+        {
+            attackingTargets.Add(collision.gameObject.GetComponent<ObjectStats>());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ritual"))
+        {
+            if (attackingTargets.Contains(collision.gameObject.GetComponent<ObjectStats>()))
+            {
+                attackingTargets.Remove(collision.gameObject.GetComponent<ObjectStats>());
+            }
+        }
     }
 }
