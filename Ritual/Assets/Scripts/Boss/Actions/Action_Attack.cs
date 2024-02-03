@@ -26,6 +26,13 @@ public class Action_Attack : Action_Base
         base.OnActivated(linkedGoal);
         attackGoal = (Goal_Attack)LinkedGoal;
     }
+    public override void OnDeactivated()
+    {
+     
+        base.OnDeactivated();
+        Agent.DeActivateRed();
+        attackGoal = null;
+    }
 
     public override void OnTick()
     {

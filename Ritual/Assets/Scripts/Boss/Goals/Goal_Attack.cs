@@ -11,9 +11,10 @@ public class Goal_Attack : Goal_Base
     float DistanceToStopAttack = 7f;
     float CurrentPriority = 0f;
     int attackPriority = 60;
-   
+  
     public override void OnTickGoal()
     {
+       
 
         distance = Vector2.Distance(Agent.transform.position, player.transform.position);
 
@@ -26,10 +27,16 @@ public class Goal_Attack : Goal_Base
 
         CurrentPriority = attackPriority;
     }
+    public override void OnGoalDeactivated()
+    {
+        base.OnGoalDeactivated();
+
+
+    }
 
     public override int CalculatePriority()
     {
-        // lägg till om fienden är långt borta
+       
         return Mathf.FloorToInt(CurrentPriority);
     }
     public override bool CanRun()

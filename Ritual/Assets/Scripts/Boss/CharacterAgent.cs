@@ -17,8 +17,9 @@ public class CharacterAgent : MonoBehaviour
     float attackTime = 6f;
 
     public GameObject redObjectToActivate;
- 
- 
+    public GameObject explotionToActivate;
+
+
     public  void MoveTo(Vector2 destination)
     {
         transform.position = Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
@@ -46,5 +47,18 @@ public class CharacterAgent : MonoBehaviour
             }
         }
       
+    }
+    public void DeActivateRed()
+    {
+        redObjectToActivate.SetActive(false);
+    }
+
+    public void Explode()
+    {
+        explotionToActivate.SetActive(true);
+    }
+    public void DeActivateExplode()
+    {
+        explotionToActivate.SetActive(false);
     }
 }
