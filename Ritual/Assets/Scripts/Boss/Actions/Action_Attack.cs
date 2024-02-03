@@ -1,18 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class Action_Attack : MonoBehaviour
+public class Action_Attack : Action_Base
 {
-    // Start is called before the first frame update
-    void Start()
+    //[SerializeField] float bullets = 10f;
+
+    List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
+    Goal_Attack attackGoal;
+    public override List<System.Type> GetSupportedGoals()
     {
-        
+        return SupportedGoals;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override float GetCost()
     {
-        
+      
+
+        return 0f;
+    }
+
+    public override void OnActivated(Goal_Base linkedGoal)
+    {
+        base.OnActivated(linkedGoal);
+        attackGoal = (Goal_Attack)LinkedGoal;
+    }
+
+    public override void OnTick()
+    {
+        Agent.SwordAttack();
     }
 }

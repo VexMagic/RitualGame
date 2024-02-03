@@ -10,16 +10,16 @@ public class Goal_Chase : Goal_Base
     [SerializeField] float DistanceToStopChase = 1f;
     int CurrentPriority = 0;
    
-    public float distance;
+
     public Vector2 MoveTarget => player != null ? player.transform.position : transform.position;
     public override void OnTickGoal()
     {
-        CurrentPriority = 60;
+        CurrentPriority = 0;
 
-        //// player distance or ritual?
-        //distance = Vector2.Distance(Agent.transform.position, player.transform.position);
+        // player distance or ritual?
+        distance = Vector2.Distance(Agent.transform.position, player.transform.position);
 
-        //CurrentPriority = distance < DistanceToStopChase ? 0 : ChasePriority;
+        CurrentPriority = distance < DistanceToStopChase ? 0 : ChasePriority;
 
 
     }

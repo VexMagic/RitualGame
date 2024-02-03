@@ -20,6 +20,8 @@ public class Goal_Base : MonoBehaviour, IGoal
     protected PutThisOnPlayer thisPlayer;
 
     protected Action_Base LinkedAction;
+
+    public float distance;
     void Awake()
     {
         Agent = GetComponent<CharacterAgent>();
