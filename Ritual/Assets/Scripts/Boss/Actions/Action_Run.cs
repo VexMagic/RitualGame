@@ -33,7 +33,6 @@ public class Action_Run : Action_Base
 
     public override void OnDeactivated()
     {
-
         base.OnDeactivated();
         Agent.DeActivateExplode();
         RunGoal = null;

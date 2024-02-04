@@ -9,8 +9,8 @@ public class Goal_ExpotionRun : Goal_Base
     float DistanceToStopAttack = 7f;
     float CurrentPriority = 0f;
     int Priority = 65;
-    int restart = 70;
-    [SerializeField] float PriorityBuildRate = 1f;
+    int restart = 75;
+    float PriorityBuildRate = 3f;
     public override void OnTickGoal()
     {
         CurrentPriority += PriorityBuildRate * Time.deltaTime;
@@ -39,13 +39,19 @@ public class Goal_ExpotionRun : Goal_Base
 
     public override int CalculatePriority()
     {
-        // lägg till om fienden är långt borta
+        
         return Mathf.FloorToInt(CurrentPriority);
     }
     public override bool CanRun()
     {
+        if(Agent.agentHealth < 80)
+        {
+            return true;
+        }
+        else
+        {
+            return true;
 
-
-        return true;
+        }
     }
 }

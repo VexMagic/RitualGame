@@ -190,7 +190,6 @@ public class Villager : MonoBehaviour
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = direction * projectileSpeed;
 
-
     }
 
     //void OnCollisionEnter2D(Collision2D collision)
