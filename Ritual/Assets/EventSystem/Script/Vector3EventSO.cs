@@ -11,5 +11,5 @@ public class Vector3EventSO : ScriptableObject
 
     public event Action<Vector3> Action;
 
-    public void Invoke(Vector3 go) => Action?.Invoke(go);
+    public void Invoke(Vector3 vec) => Action?.Invoke(vec);
 }

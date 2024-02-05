@@ -10,5 +10,6 @@ public class StunAOE : AOE
         base.Effect(obj);
         Debug.Log("Stun " + obj.name + " for " + stunDuration + "s");
         Debug.Log("Damage " + obj.name);
+        //call activate voodoo from enemy
     }
 }

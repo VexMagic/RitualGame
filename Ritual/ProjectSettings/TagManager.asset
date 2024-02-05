@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - test
+  - Villager
+  - Ritual
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - test
+  - Villager
   - Water
   - UI
   - 
