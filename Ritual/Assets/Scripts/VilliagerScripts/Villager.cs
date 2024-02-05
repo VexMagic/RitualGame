@@ -23,7 +23,7 @@ public class Villager : MonoBehaviour
     float playerTargetShootingRange = 7f;
     float meleeRange = 2f;
     float villagerTargetRange = 10f;
-    float ritualTargetRange = 20f;
+    float ritualTargetRange = 200f;
 
     int currentVillager;
     int currentPlayer;
@@ -189,7 +189,6 @@ public class Villager : MonoBehaviour
 
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = direction * projectileSpeed;
-
 
     }
 
