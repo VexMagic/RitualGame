@@ -144,7 +144,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -206,15 +206,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8bfff1064dcb04780e02f23560eec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movmentSpeed: 2.7
   projectileVillagerPrefab: {fileID: 4552183499369388687, guid: ffda4cb060b658a499f66d1786261257, type: 3}
   target: {fileID: 8605390564410707565}
   activationDelay: 3
+  bombDelay: 1
+  damgeExplotion: 9
   redObjectToActivate: {fileID: 8605390565919909808}
   explotionToActivate: {fileID: 8605390566188394815}
   healthBar: {fileID: 0}
   agentHealth: 100
+  explotionRadius: 9
   projectileSpeed: 7
   shootCooldown: 1.5
+  swordDmg: {fileID: 2581469069947096634}
 --- !u!114 &8605390564410707556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +369,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76989d50103e5814f9fa87ceb3f52964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
+  currentHealth: 1000
   onDeath: {fileID: 0}
 --- !u!1 &8605390565530464514
 GameObject:
@@ -460,6 +466,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8605390565919909814}
   - component: {fileID: 8605390565919909815}
+  - component: {fileID: 9034200377626114898}
+  - component: {fileID: 2581469069947096634}
+  - component: {fileID: 8264849910863733951}
   m_Layer: 0
   m_Name: RedTargetArea
   m_TagString: Untagged
@@ -534,6 +543,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &9034200377626114898
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390565919909808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000059604645, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &2581469069947096634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390565919909808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe7cfd6de3c762428a8fbbaeb4ba1cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  attacksPerSecond: 0.5
+  active: 0
+--- !u!50 &8264849910863733951
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390565919909808}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8605390566187043764
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +689,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8605390566188394814}
   - component: {fileID: 8605390566188394813}
+  - component: {fileID: 656955336747996140}
+  - component: {fileID: 7477792478985043157}
+  - component: {fileID: 2335513995595993114}
   m_Layer: 0
   m_Name: explotionWarning
   m_TagString: Untagged
@@ -702,3 +766,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &656955336747996140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390566188394815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865da57ca6693764eb5f5efb186d6492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damge: 9
+  tickingBomb: 0
+--- !u!50 &7477792478985043157
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390566188394815}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &2335513995595993114
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390566188394815}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

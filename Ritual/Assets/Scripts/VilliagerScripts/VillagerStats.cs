@@ -5,7 +5,7 @@ using UnityEngine;
 public class VillagerStats : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     [Header("Events")]
     [SerializeField] private GameObjectEventSO onDeath;

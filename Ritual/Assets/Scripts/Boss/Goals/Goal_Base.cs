@@ -14,6 +14,7 @@ public interface IGoal
 public class Goal_Base : MonoBehaviour, IGoal
 {
     protected CharacterAgent Agent;
+    protected VillagerStats Stats;
 
     public  GameObject player;
 
@@ -24,6 +25,7 @@ public class Goal_Base : MonoBehaviour, IGoal
     public float distance;
     void Awake()
     {
+        Stats = GetComponent<VillagerStats>();
         Agent = GetComponent<CharacterAgent>();
         thisPlayer = GetComponent<PutThisOnPlayer>();
     }
