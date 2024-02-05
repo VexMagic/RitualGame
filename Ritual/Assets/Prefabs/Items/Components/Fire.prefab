@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32192bab9edd878449bb9513475b4693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickDamage: 5
+  activateEvent: {fileID: 0}
+  tickDamage: 3
   tickFrequency: 0.5
-  duration: 4
   tagToUseEffectOn: test
