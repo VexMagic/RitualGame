@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : ObjectStats
 {
     public int blood; //should move this to a seperated script "PlayerStats" or something
 
