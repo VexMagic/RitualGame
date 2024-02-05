@@ -404,75 +404,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5159235252429985029, guid: 1cbb99029c7288c44bdc76b3c094be05, type: 3}
   m_PrefabInstance: {fileID: 1896641761}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1545197888 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8711116663873122292, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
-  m_PrefabInstance: {fileID: 591589909635463438}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1545197892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545197888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d288d738e0212bc40a16279636ab27fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints:
-  - {fileID: 1545197888}
-  enemies: []
-  player: {fileID: 2032882461}
-  altars:
-  - {fileID: 2063079346}
-  - {fileID: 2091790593}
-  enemyTypes:
-  - {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
-  - {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
-  minSpawnTime: 1
-  maxSpawnTime: 1
-  spawnRateIncreaseInterval: 5
-  spawnTimer: 5
-  canSpawn: 0
-  spawnDistanceToPlayer: 7
-  spawnDistanceToEnemy: 5
-  spawnDistanceToAltar: 5
-  enemyPerSpawn: 1
-  randomSpawnRangeMin: -10
-  randomSpawnRangeMax: 10
-  onEnemyDeath: {fileID: 11400000, guid: cd7f6a47f5e906841915620c209faf98, type: 2}
---- !u!114 &1545197893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545197888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed5e162914ea834aae38fb44aa42b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
-  amountToPool: 100
---- !u!114 &1545197896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545197888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed5e162914ea834aae38fb44aa42b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
-  amountToPool: 50
 --- !u!1 &1602938799
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +674,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1545197892, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2032882461}
+    - target: {fileID: 1545197892, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+      propertyPath: altars.Array.data[0]
+      value: 
+      objectReference: {fileID: 2063079346}
+    - target: {fileID: 1545197892, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+      propertyPath: altars.Array.data[1]
+      value: 
+      objectReference: {fileID: 2091790593}
     - target: {fileID: 6047665848964754632, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -789,10 +732,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8711116663873122292, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
       propertyPath: m_Name
-      value: Spawner
+      value: SpawnerPool
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4559889268929542253, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
 --- !u!1001 &5919982864383660424
 PrefabInstance:
