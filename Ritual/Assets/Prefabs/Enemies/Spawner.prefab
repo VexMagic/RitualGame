@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6047665848964754632}
   - component: {fileID: 8043886058608576207}
-  - component: {fileID: 4559889268929542253}
+  - component: {fileID: 1545197892}
+  - component: {fileID: 1545197893}
+  - component: {fileID: 1545197896}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -85,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4559889268929542253
+--- !u!114 &1545197892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +96,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 8711116663873122292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26817af53a6cb154b9f67a90aabbf9a8, type: 3}
+  m_Script: {fileID: 11500000, guid: d288d738e0212bc40a16279636ab27fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  villagerPrefab: {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
-  spawnInterval: 3
+  spawnPoints:
+  - {fileID: 8711116663873122292}
+  enemies: []
+  player: {fileID: 0}
+  altars:
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyTypes:
+  - {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
+  - {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
+  minSpawnTime: 1
+  maxSpawnTime: 1
+  spawnRateIncreaseInterval: 5
+  spawnTimer: 5
+  canSpawn: 0
+  spawnDistanceToPlayer: 7
+  spawnDistanceToEnemy: 5
+  spawnDistanceToAltar: 5
+  enemyPerSpawn: 1
+  randomSpawnRangeMin: -10
+  randomSpawnRangeMax: 10
+  onEnemyDeath: {fileID: 11400000, guid: cd7f6a47f5e906841915620c209faf98, type: 2}
+--- !u!114 &1545197893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711116663873122292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed5e162914ea834aae38fb44aa42b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
+  amountToPool: 100
+--- !u!114 &1545197896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711116663873122292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed5e162914ea834aae38fb44aa42b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
+  amountToPool: 50
