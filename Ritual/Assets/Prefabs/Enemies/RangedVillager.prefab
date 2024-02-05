@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5299814823627667607}
   - component: {fileID: 8089215464297079529}
   - component: {fileID: 5478611918102267863}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RangedVillager
   m_TagString: Villager
   m_Icon: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   idleMaxTime: 10
   player: {fileID: 3375186866733616373, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
   ritual: {fileID: 5919982865455566461, guid: bce83c12148d73a499818bfe5890740b, type: 3}
+  isHitByVooDoo: 0
   ranged: 1
   projectileVillagerPrefab: {fileID: 4552183499369388687, guid: ffda4cb060b658a499f66d1786261257, type: 3}
   projectileSpeed: 5
