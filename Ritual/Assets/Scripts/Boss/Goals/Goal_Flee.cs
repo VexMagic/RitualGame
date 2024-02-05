@@ -34,7 +34,7 @@ public class Goal_Flee : Goal_Base
     }
     public override bool CanRun()
     {
-        if(Agent.agentHealth < 20)
+        if(Stats.currentHealth < 200)
         {
             return true;
         }

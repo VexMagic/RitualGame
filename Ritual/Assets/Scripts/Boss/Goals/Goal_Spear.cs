@@ -38,7 +38,7 @@ public class Goal_Spear : Goal_Base
     }
     public override bool CanRun()
     {
-        if(Agent.agentHealth < 45 )
+        if(Stats.currentHealth < 450 )
         {
             return true;
         }

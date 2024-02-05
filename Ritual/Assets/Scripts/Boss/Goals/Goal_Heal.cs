@@ -15,7 +15,7 @@ public class Goal_Heal : Goal_Base
 
         distance = Vector2.Distance(Agent.transform.position, player.transform.position);
 
-        CurrentPriority = MinDistanceToHeal < distance ? 0 : healPriority - Agent.agentHealth;
+        CurrentPriority = MinDistanceToHeal < distance ? 0 : healPriority - (Stats.currentHealth/10);
 
     }
     public override void OnGoalActivated(Action_Base linkedAction)
@@ -39,7 +39,7 @@ public class Goal_Heal : Goal_Base
     public override bool CanRun()
     {
         distance = Vector2.Distance(Agent.transform.position, player.transform.position);
-        if (Agent.agentHealth < 80 && distance > 8f)
+        if (Stats.currentHealth < 800 && distance > 8f)
         {
             return true;
         }

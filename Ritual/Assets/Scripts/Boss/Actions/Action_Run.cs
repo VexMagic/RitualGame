@@ -26,7 +26,7 @@ public class Action_Run : Action_Base
         
         RunGoal = (Goal_ExpotionRun)LinkedGoal;
 
-        Agent.Explode();
+        Agent.Explode(player);
         // transform.position = Vector2.MoveTowards(transform.position, thisPlayer.transform.position, movmentSpeed * Time.deltaTime);
 
     }
@@ -40,7 +40,7 @@ public class Action_Run : Action_Base
 
     public override void OnTick()
     {
-        Agent.Explode();
+        Agent.Explode(player);
         //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, movmentSpeed * Time.deltaTime);
     }
 }

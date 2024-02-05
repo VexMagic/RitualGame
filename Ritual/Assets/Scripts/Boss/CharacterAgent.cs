@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class CharacterAgent : MonoBehaviour
 {
-    float movmentSpeed = 4f;
+    [SerializeField] float movmentSpeed = 2.7f;
     [SerializeField] GameObject projectileVillagerPrefab;
     public Transform target; 
     float rotationSpeed = 2000f;
@@ -14,11 +14,17 @@ public class CharacterAgent : MonoBehaviour
     public float activationDelay = 1f; 
 
     private float timer = 0f;
-    private bool timerStarted = false;
+   
     float attackTime = 6f;
 
+    public float bombDelay = 1f;
+
+    private float bombTimer = 0f;
+
+    float bombTime = 1f;
+
     private float healTimer = 0f;
-   
+    [SerializeField] int damgeExplotion = 9;
     float hTime = 1f;
 
     public GameObject redObjectToActivate;
@@ -26,10 +32,15 @@ public class CharacterAgent : MonoBehaviour
     public HealthBar healthBar;
 
     public float agentHealth = 50;
-
+    [SerializeField] float explotionRadius = 9f;
     [SerializeField] float projectileSpeed = 7f;
     [SerializeField] float shootCooldown = 1.5f;
     private float timeSinceLastShot = 0f;
+
+    [SerializeField] SwordDmg swordDmg;
+    VillagerStats stats;
+ 
+
     public  void MoveTo(Vector2 destination)
     {
         transform.position = Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
@@ -38,47 +49,72 @@ public class CharacterAgent : MonoBehaviour
     {
         transform.position = -Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
     }
+    private void Awake()
+    {
+        stats = GetComponent<VillagerStats>();
+    }
+
     private void Update()
     {
-        healthBar.UpdateHealth(agentHealth/100);
+        healthBar.UpdateHealth(stats.currentHealth/1000);
+       
     }
     public void SwordAttack()
     {
+        
         redObjectToActivate.SetActive(true);
-        if (!timerStarted)
+
+
+        timer += Time.deltaTime;
+
+        if (timer >= activationDelay)
         {
-           
-            timer += Time.deltaTime;
+            swordDmg.AttackTargets();
+            float rotationAngle = rotationSpeed * Time.deltaTime;
 
-            if (timer >= activationDelay)
+
+
+            transform.RotateAround(target.position, Vector3.forward, rotationAngle);
+            if (attackTime < timer)
             {
-               
-                float rotationAngle =  rotationSpeed * Time.deltaTime;
 
-              
-                transform.RotateAround(target.position, Vector3.forward, rotationAngle);
-                if(attackTime< timer)
-                {
-                   
-                    timer = 0f;
-                   
-                }
+                timer = 0f;
+
             }
         }
-      
+
+
     }
     public void DeActivateRed()
     {
         redObjectToActivate.SetActive(false);
+      
     }
 
-    public void Explode()
+    public void Explode(GameObject player)
     {
         explotionToActivate.SetActive(true);
+
+        bombTimer += Time.deltaTime;
+
+        if (bombTimer >= activationDelay)
+        {
+            float  distance = Vector2.Distance(this.transform.position, player.transform.position);
+            if (distance < explotionRadius)
+            {
+                player.GetComponent<ObjectStats>().TakeDamage(damgeExplotion);
+            }
+          
+        }
+
+        
+
+        
     }
     public void DeActivateExplode()
     {
         explotionToActivate.SetActive(false);
+        bombTimer = 0f;
     }
     public void HealthBarUpdate(int Health)
     {
@@ -120,5 +156,6 @@ public class CharacterAgent : MonoBehaviour
         projectileRb.velocity = direction * projectileSpeed;
 
     }
+
 
 }

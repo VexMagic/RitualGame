@@ -44,14 +44,13 @@ public class Goal_ExpotionRun : Goal_Base
     }
     public override bool CanRun()
     {
-        if(Agent.agentHealth < 80)
+        if(Stats.currentHealth < 800)
         {
             return true;
         }
         else
         {
             return true;
-
         }
     }
 }
