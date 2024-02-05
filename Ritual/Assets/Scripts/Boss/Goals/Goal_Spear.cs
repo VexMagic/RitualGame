@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal_Heal : Goal_Base
+public class Goal_Spear : Goal_Base
 {
-    float MinDistanceToHeal = 10f;
-   
+    float MinDistanceToAttack = 8f;
+    float DistanceToStopAttack = 7f;
     float CurrentPriority = 0f;
-    int healPriority = 90;
+    int attackPriority = 65;
 
     public override void OnTickGoal()
     {
@@ -15,14 +15,14 @@ public class Goal_Heal : Goal_Base
 
         distance = Vector2.Distance(Agent.transform.position, player.transform.position);
 
-        CurrentPriority = MinDistanceToHeal < distance ? 0 : healPriority - Agent.agentHealth;
+        CurrentPriority = MinDistanceToAttack < distance ? 0 : attackPriority;
 
     }
     public override void OnGoalActivated(Action_Base linkedAction)
     {
         base.OnGoalActivated(linkedAction);
 
-        CurrentPriority = healPriority;
+        CurrentPriority = attackPriority;
     }
     public override void OnGoalDeactivated()
     {
@@ -38,8 +38,7 @@ public class Goal_Heal : Goal_Base
     }
     public override bool CanRun()
     {
-        distance = Vector2.Distance(Agent.transform.position, player.transform.position);
-        if (Agent.agentHealth < 80 && distance > 8f)
+        if(Agent.agentHealth < 40 )
         {
             return true;
         }
@@ -49,4 +48,5 @@ public class Goal_Heal : Goal_Base
 
         }
     }
+
 }

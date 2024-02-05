@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class Action_Attack : Action_Base
 {
-    //[SerializeField] float bullets = 10f;
+    
 
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Attack) });
     Goal_Attack attackGoal;

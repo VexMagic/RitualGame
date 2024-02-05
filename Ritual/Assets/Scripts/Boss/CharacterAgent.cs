@@ -34,6 +34,10 @@ public class CharacterAgent : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
     }
+    public void MoveAway(Vector2 destination)
+    {
+        transform.position = -Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
+    }
     private void Update()
     {
         healthBar.UpdateHealth(agentHealth/100);
@@ -94,14 +98,14 @@ public class CharacterAgent : MonoBehaviour
         }
        
     }
-    public void Shoot()
+    public void Shoot(GameObject player)
     {
         timeSinceLastShot += Time.deltaTime;
 
 
         if (timeSinceLastShot >= shootCooldown)
         {
-            ShootProjectile();
+            ShootProjectile(player);
             timeSinceLastShot = 0f;
         }
 
