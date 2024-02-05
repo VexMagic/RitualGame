@@ -3,30 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AOE : MonoBehaviour
+public class AOE : Attack
 {
 
-    [SerializeField] private float tickDamage;
+    [SerializeField] protected int tickDamage;
     [SerializeField] private float tickFrequency;
     //duration 0 = doesn't stop
-    [SerializeField] private float duration;
     [SerializeField] private string tagToUseEffectOn;
     private float timer;
-    private float timeAlive;
     private List<GameObject> gameObjects;
 
     private void Start()
     {
+        Debug.Log("Start");
         gameObjects = new List<GameObject>();
     }
 
-    void Update()
+    protected virtual void Update()
     {
+        if (AttackActive)
+            return;
         if (TickTimer())
             UseEffect();
-
-        if (duration > 0)
-            IncrementTTL();
     }
 
 
@@ -41,9 +39,13 @@ public class AOE : MonoBehaviour
 
     private void UseEffect()
     {
-        foreach (GameObject obj in gameObjects)
+        if (gameObjects.Count <= 0)
+            return;
+
+        for(int i = 0; i < gameObjects.Count; i++)
         {
-            Effect(obj);
+            if (gameObjects[i] != null)
+                Effect(gameObjects[i]);
         }
     }
 
@@ -59,23 +61,12 @@ public class AOE : MonoBehaviour
         return false;
     }
 
-    private void IncrementTTL()
-    {
-        timeAlive += Time.deltaTime;
-        if (timeAlive >= duration)
-            OnTTLEnd();
-    }
 
-    protected virtual void OnTTLEnd()
-    {
-        Destroy(gameObject);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(tagToUseEffectOn))
         {
-            Debug.Log(collision.name + " entered");
             gameObjects.Add(collision.gameObject);
         }
     }
@@ -84,7 +75,6 @@ public class AOE : MonoBehaviour
     {
         if (collision.CompareTag(tagToUseEffectOn))
         {
-            Debug.Log(collision.name + " exited");
             gameObjects.Remove(collision.gameObject);
         }
     }

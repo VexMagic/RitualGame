@@ -6,8 +6,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private float timeToLive;
+    [SerializeField] private bool destoryOnCOll;
+    [SerializeField] private string tagToDamage;
     private Vector3 firingDir;
     private bool fired;
     private float timeAlive;
@@ -58,9 +60,14 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit Something");
-        //damage enemy
+        if (collision.transform.CompareTag(tagToDamage))
+        {
+            collision.transform.GetComponent<VillagerStats>().TakeDamage(damage);
+            if (destoryOnCOll)
+                Destroy(gameObject);
+        }
     }
+
 }

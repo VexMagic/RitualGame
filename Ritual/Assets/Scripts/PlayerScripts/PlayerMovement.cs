@@ -8,6 +8,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private Vector2 movement;
 
+    [Header("Event")]
+    [SerializeField] private Vector2EventSO OnDirectionChange;
+
+    public Vector2 Movement { get { return movement; } }
+
     void FixedUpdate()
     {
         //moves the player if a direction is inputed
@@ -20,13 +25,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnMovement(InputValue value) //gets input from Unity Input System
     {
         movement = value.Get<Vector2>();
+        OnDirectionChange.Invoke(movement);
 
     }
 
     private void Move()
     {
-        //rBody.MovePosition(rBody.position + movement * Time.fixedDeltaTime * moveSpeed);
-        Vector3 move = movement * Time.fixedDeltaTime * moveSpeed;
-        transform.position += move;
+        rBody.MovePosition(rBody.position + movement * Time.fixedDeltaTime * moveSpeed);
     }
 }
