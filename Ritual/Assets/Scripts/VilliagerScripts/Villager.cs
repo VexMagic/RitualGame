@@ -44,7 +44,10 @@ public class Villager : MonoBehaviour
     [SerializeField] ParticleSystem particleSystem;
     private List<GameObject> players = new List<GameObject>();
     private List<GameObject> agents = new List<GameObject>();
-
+    private List<ObjectStats> attackingTargets = new List<ObjectStats>();
+    [SerializeField] int damage = 1;
+    [SerializeField] float attacksPerSecond = 0.5f;
+    private float attackTimer;
     private void Awake()
     {
         GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
@@ -85,7 +88,9 @@ public class Villager : MonoBehaviour
         if (notAtive)
             return;
 
+        AttackTargets();
         theTree.MakeDecision();
+        
     }
 
     public void AtivateVodo(bool active)
@@ -219,5 +224,36 @@ public class Villager : MonoBehaviour
         {
         }
 
+    }
+    private void AttackTargets()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attacksPerSecond && attackingTargets.Count != 0)
+        {
+            attackTimer = 0;
+
+            foreach (var target in attackingTargets)
+            {
+                target.TakeDamage(damage);
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ritual"))
+        {
+            attackingTargets.Add(collision.gameObject.GetComponent<ObjectStats>());
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ritual"))
+        {
+            if (attackingTargets.Contains(collision.gameObject.GetComponent<ObjectStats>()))
+            {
+                attackingTargets.Remove(collision.gameObject.GetComponent<ObjectStats>());
+            }
+        }
     }
 }
