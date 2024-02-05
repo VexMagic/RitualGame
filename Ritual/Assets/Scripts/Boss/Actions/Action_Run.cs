@@ -23,7 +23,7 @@ public class Action_Run : Action_Base
     {
         base.OnActivated(linkedGoal);
 
-        // cache the chase goal
+        
         RunGoal = (Goal_ExpotionRun)LinkedGoal;
 
         Agent.Explode();
