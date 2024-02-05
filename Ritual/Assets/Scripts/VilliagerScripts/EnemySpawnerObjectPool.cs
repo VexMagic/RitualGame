@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawnerObjectPool : MonoBehaviour
 {
     public static EnemySpawnerObjectPool Instance;
-    private ObjectPool objectPool;
+    private ObjectPool[] objectPools;
 
     public GameObject[] spawnPoints;
     GameObject currentSpawnPoint;
@@ -44,7 +44,7 @@ public class EnemySpawnerObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        objectPool = GetComponent<ObjectPool>();
+        objectPools = GetComponents<ObjectPool>();
         TriggerWave();
 
     }
@@ -80,22 +80,28 @@ public class EnemySpawnerObjectPool : MonoBehaviour
                     {
                         spawnAnEnemy = false;
                     }
-
-                    if (Vector2.Distance(player.transform.position, randomSpawn) < spawnDistanceToPlayer)
-                    {
-                        spawnAnEnemy = false;
-                    }
                 }
+
+                if (Vector2.Distance(player.transform.position, randomSpawn) < spawnDistanceToPlayer)
+                {
+                    spawnAnEnemy = false;
+                }
+
                 if (spawnAnEnemy)
                 {
-                    GameObject enemy = objectPool.GetPooledObject();
-                    if (enemy != null)
-                    {
-                        enemy.transform.position = randomSpawn;
-                        enemy.SetActive(true);
-                        enemies.Add(enemy);
-                        enemy.GetComponent<VillagerStats>().ResetEnemy();
-                    }
+                    /*                    for (int e = 0; e < objectPools.Length; e++)
+                                        {*/
+                    int randSpawn = Random.Range(0, 2);
+                        GameObject enemy = objectPools[randSpawn].GetPooledObject();
+                        if (enemy != null)
+                        {
+                            enemy.transform.position = randomSpawn;
+                            enemy.SetActive(true);
+                            enemies.Add(enemy);
+                            enemy.GetComponent<VillagerStats>().ResetEnemy();
+                        }
+                    /*}*/
+                    
                 }
                 else
                 {

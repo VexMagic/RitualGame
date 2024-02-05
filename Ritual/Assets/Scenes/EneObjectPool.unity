@@ -430,6 +430,7 @@ MonoBehaviour:
   - {fileID: 2091790593}
   enemyTypes:
   - {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
+  - {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
   minSpawnTime: 1
   maxSpawnTime: 1
   spawnRateIncreaseInterval: 5
@@ -455,8 +456,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjects: []
+  objectToPool: {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
+  amountToPool: 100
+--- !u!114 &1545197896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545197888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed5e162914ea834aae38fb44aa42b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
   objectToPool: {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
-  amountToPool: 300
+  amountToPool: 50
 --- !u!1 &1602938799
 GameObject:
   m_ObjectHideFlags: 0
