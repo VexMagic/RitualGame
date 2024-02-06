@@ -163,7 +163,7 @@ public class Villager : MonoBehaviour
             }
             else if (meleeRange > distance)
             {
-                Debug.Log("attack");
+                //Debug.Log("attack");
                 // do attack
             }
             else

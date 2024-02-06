@@ -12,16 +12,19 @@ public class AOE : Attack
     [SerializeField] private string tagToUseEffectOn;
     private float timer;
     private List<GameObject> gameObjects;
+    [Header("Animation")]
+    [SerializeField] private EventSO animStartEvent;
 
-    private void Start()
+    protected override void Start()
     {
-        Debug.Log("Start");
+        base.Start();
         gameObjects = new List<GameObject>();
+
     }
 
     protected virtual void Update()
     {
-        if (AttackActive)
+        if (!AttackActive)
             return;
         if (TickTimer())
             UseEffect();
@@ -39,10 +42,14 @@ public class AOE : Attack
 
     private void UseEffect()
     {
+        if (animStartEvent != null)
+        {
+            animStartEvent.Invoke();
+        }
         if (gameObjects.Count <= 0)
             return;
 
-        for(int i = 0; i < gameObjects.Count; i++)
+        for (int i = 0; i < gameObjects.Count; i++)
         {
             if (gameObjects[i] != null)
                 Effect(gameObjects[i]);

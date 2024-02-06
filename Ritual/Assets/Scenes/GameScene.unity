@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8608125530868401797, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 80d360d33189dd14f80e50af675d24d8, type: 3}
+    - target: {fileID: 8608125530868401797, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6eab952c490d44696e77b0033053ed, type: 3}
 --- !u!1 &906720718
@@ -602,11 +610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582393291187187815, guid: f5f14572877c32c4bb38c2eac2ac7671, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.489407
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 2582393291187187815, guid: f5f14572877c32c4bb38c2eac2ac7671, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24.453602
+      value: -10.9
       objectReference: {fileID: 0}
     - target: {fileID: 2582393291187187815, guid: f5f14572877c32c4bb38c2eac2ac7671, type: 3}
       propertyPath: m_LocalPosition.z

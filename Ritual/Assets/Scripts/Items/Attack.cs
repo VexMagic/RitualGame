@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     [SerializeField] protected EventSO activateEvent;
-    private bool attackActive;
+    [SerializeField] private bool attackActive;
     protected bool AttackActive {  get { return attackActive; } }
 
     protected virtual void OnEnable()
@@ -18,7 +18,7 @@ public class Attack : MonoBehaviour
         activateEvent.Action -= ActivateAttack;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         attackActive = false;
     }
