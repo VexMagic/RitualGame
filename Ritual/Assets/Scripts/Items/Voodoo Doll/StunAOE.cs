@@ -8,8 +8,7 @@ public class StunAOE : AOE
     protected override void Effect(GameObject obj)
     {
         base.Effect(obj);
-        Debug.Log("Stun " + obj.name + " for " + stunDuration + "s");
-        Debug.Log("Damage " + obj.name);
-        //call activate voodoo from enemy
+        if(obj.TryGetComponent<Villager>(out Villager villager))
+            villager.AtivateVodo(true);
     }
 }
