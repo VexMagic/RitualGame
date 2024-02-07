@@ -11,7 +11,7 @@ public class Villager : MonoBehaviour
     // stun?
     [SerializeField] float idleMinTime = 5f;
     [SerializeField] float idleMaxTime = 10f;
-    float movmentSpeed = 6f;
+    float movmentSpeed = 4f;
 
 
     [SerializeField] Transform player;
