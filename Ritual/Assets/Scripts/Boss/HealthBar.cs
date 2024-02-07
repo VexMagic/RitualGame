@@ -4,12 +4,13 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider healthSlider;
-    public float health;
-    // Funktion för att uppdatera hälsomätaren med en given värde (0.0 till 1.0).
+   // public float health;
+    // (0.0 to 1.0).
+   [SerializeField] VillagerStats stats;
    
     public void UpdateHealth(float healthPercentage)
     {
      
-        healthSlider.value = healthPercentage;
+        healthSlider.value = healthPercentage/ stats.maxHealth;
     }
 }

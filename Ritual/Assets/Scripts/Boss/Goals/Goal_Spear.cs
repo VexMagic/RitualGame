@@ -38,7 +38,8 @@ public class Goal_Spear : Goal_Base
     }
     public override bool CanRun()
     {
-        if(Stats.currentHealth < 450 )
+        distance = Vector2.Distance(Agent.transform.position, player.transform.position);
+        if (Stats.currentHealth < 450 && distance > 4f)
         {
             return true;
         }

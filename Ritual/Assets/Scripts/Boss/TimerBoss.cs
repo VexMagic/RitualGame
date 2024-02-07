@@ -3,8 +3,8 @@ using UnityEngine;
 public class TimerBoss : MonoBehaviour
 {
     [SerializeField] float countdownTime = 10f;
-    [SerializeField] GameObject objectToActivate;
-
+    [SerializeField] GameObject boss;
+    [SerializeField] GameObject healthbar;
     private bool timerActive = false;
 
     private void Start()
@@ -20,6 +20,7 @@ public class TimerBoss : MonoBehaviour
 
     private void ActivateObject()
     {
-        objectToActivate.SetActive(true);
+        healthbar.SetActive(true);
+        boss.SetActive(true);
     }
 }

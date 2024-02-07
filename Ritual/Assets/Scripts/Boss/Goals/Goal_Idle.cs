@@ -14,7 +14,7 @@ public class Goal_Idle : Goal_Base
     [SerializeField] float bossTime = 30f;
     public override void OnTickGoal()
     {
-        boss.SetActive(false);
+        //boss.SetActive(false);
         timer += Time.deltaTime;
 
 

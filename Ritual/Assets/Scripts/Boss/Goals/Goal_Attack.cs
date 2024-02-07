@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Goal_Attack : Goal_Base
 {
 
-    float MinDistanceToAttack = 4f;
+    float MinDistanceToAttack = 3.8f;
     float DistanceToStopAttack = 7f;
     float CurrentPriority = 0f;
     int attackPriority = 60;

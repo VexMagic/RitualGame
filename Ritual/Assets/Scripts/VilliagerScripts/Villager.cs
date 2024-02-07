@@ -161,11 +161,11 @@ public class Villager : MonoBehaviour
                     timeSinceLastShot = 0f;
                 }
             }
-            else if (meleeRange > distance)
-            {
-                //Debug.Log("attack");
-                // do attack
-            }
+            //else if (meleeRange > distance)
+            //{
+            //    //Debug.Log("attack");
+            //    // do attack
+            //}
             else
             {
                 transform.position = Vector2.MoveTowards(transform.position, players[currentPlayer].transform.position, movmentSpeed * Time.deltaTime);

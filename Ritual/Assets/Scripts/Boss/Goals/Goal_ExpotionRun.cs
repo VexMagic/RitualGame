@@ -8,9 +8,9 @@ public class Goal_ExpotionRun : Goal_Base
     float MinDistanceToAttack = 4f;
     float DistanceToStopAttack = 7f;
     float CurrentPriority = 0f;
-    int Priority = 65;
+    int Priority = 205;
     int restart = 75;
-    float PriorityBuildRate = 3f;
+    float PriorityBuildRate = 4f;
     public override void OnTickGoal()
     {
         CurrentPriority += PriorityBuildRate * Time.deltaTime;

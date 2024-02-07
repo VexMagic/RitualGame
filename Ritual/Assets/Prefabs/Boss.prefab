@@ -27,9 +27,10 @@ GameObject:
   - component: {fileID: 8605390564410707539}
   - component: {fileID: 8605390564410707548}
   - component: {fileID: 8605390564410707538}
-  m_Layer: 0
+  - component: {fileID: -7073787202599187443}
+  m_Layer: 3
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Villager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   activationDelay: 3
   bombDelay: 1
   damgeExplotion: 9
+  healPerSec: 3
   redObjectToActivate: {fileID: 8605390565919909808}
   explotionToActivate: {fileID: 8605390566188394815}
   healthBar: {fileID: 0}
@@ -371,6 +373,19 @@ MonoBehaviour:
   maxHealth: 1000
   currentHealth: 1000
   onDeath: {fileID: 0}
+--- !u!114 &-7073787202599187443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605390564410707560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1cf7f7384e5740489a2a5d487f27521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &8605390565530464514
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8605390565530464513}
   - component: {fileID: 8605390565530464512}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sword (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +483,7 @@ GameObject:
   - component: {fileID: 9034200377626114898}
   - component: {fileID: 2581469069947096634}
   - component: {fileID: 8264849910863733951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RedTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +619,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8605390566187043755}
   - component: {fileID: 8605390566187043753}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +706,7 @@ GameObject:
   - component: {fileID: 656955336747996140}
   - component: {fileID: 7477792478985043157}
   - component: {fileID: 2335513995595993114}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: explotionWarning
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ public class CharacterAgent : MonoBehaviour
     public Transform target; 
     float rotationSpeed = 2000f;
 
-    public float activationDelay = 1f; 
+    [SerializeField] float activationSwordDelay = 0.8f; 
 
     private float timer = 0f;
    
@@ -25,6 +25,7 @@ public class CharacterAgent : MonoBehaviour
 
     private float healTimer = 0f;
     [SerializeField] int damgeExplotion = 9;
+    [SerializeField] int healPerSec = 3;
     float hTime = 1f;
 
     public GameObject redObjectToActivate;
@@ -32,20 +33,20 @@ public class CharacterAgent : MonoBehaviour
     public HealthBar healthBar;
 
     float agentHealth = 50;
-    [SerializeField] float explotionRadius = 9f;
-    [SerializeField] float projectileSpeed = 7f;
-    [SerializeField] float shootCooldown = 1.5f;
+    [SerializeField] float explotionRadius = 4f;
+    [SerializeField] float projectileSpeed = 8f;
+    [SerializeField] float shootCooldown = 1.0f;
     private float timeSinceLastShot = 0f;
 
     [SerializeField] SwordDmg swordDmg;
     VillagerStats stats;
  
 
-    public  void MoveTo(Vector2 destination)
+    public  void MoveTo(Vector2 destination , float speed)
     {
-        transform.position = Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, destination, speed * Time.deltaTime);
     }
-    public void MoveAway(Vector2 destination)
+    public void MoveAway(Vector2 destination )
     {
         transform.position = -Vector2.MoveTowards(transform.position, destination, movmentSpeed * Time.deltaTime);
     }
@@ -56,7 +57,7 @@ public class CharacterAgent : MonoBehaviour
 
     private void Update()
     {
-        healthBar.UpdateHealth(stats.currentHealth/1000);
+        healthBar.UpdateHealth(stats.currentHealth);
        
     }
     public void SwordAttack()
@@ -67,7 +68,7 @@ public class CharacterAgent : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer >= activationDelay)
+        if (timer >= activationSwordDelay)
         {
             swordDmg.AttackTargets();
             float rotationAngle = rotationSpeed * Time.deltaTime;
@@ -97,7 +98,7 @@ public class CharacterAgent : MonoBehaviour
 
         bombTimer += Time.deltaTime;
 
-        if (bombTimer >= activationDelay)
+        if (bombTimer >= activationSwordDelay)
         {
             float  distance = Vector2.Distance(this.transform.position, player.transform.position);
             if (distance < explotionRadius)
@@ -116,11 +117,11 @@ public class CharacterAgent : MonoBehaviour
         explotionToActivate.SetActive(false);
         bombTimer = 0f;
     }
-    public void HealthBarUpdate(int Health)
-    {
+    //public void HealthBarUpdate(int Health)
+    //{
        
-        healthBar.health = Health;
-    }
+    //    healthBar.health = Health;
+    //}
 
     public void Healing() 
     {
@@ -129,7 +130,7 @@ public class CharacterAgent : MonoBehaviour
         if (healTimer >= hTime)
         {
 
-            agentHealth += 1;
+            stats.currentHealth += healPerSec;
             healTimer = 0f;
         }
        

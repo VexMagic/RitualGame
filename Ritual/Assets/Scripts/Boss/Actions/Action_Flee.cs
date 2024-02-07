@@ -27,7 +27,7 @@ public class Action_Flee : Action_Base
         // cache the chase goal
         FleeGoal = (Goal_Flee)LinkedGoal;
 
-        Agent.MoveTo(FleeGoal.MoveTarget);
+        Agent.MoveTo(FleeGoal.MoveTarget, movmentSpeed);
         // transform.position = Vector2.MoveTowards(transform.position, thisPlayer.transform.position, movmentSpeed * Time.deltaTime);
 
     }

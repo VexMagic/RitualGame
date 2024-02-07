@@ -7,7 +7,7 @@ public class Goal_Heal : Goal_Base
     float MinDistanceToHeal = 10f;
    
     float CurrentPriority = 0f;
-    int healPriority = 90;
+    int healPriority = 85;
 
     public override void OnTickGoal()
     {
@@ -15,7 +15,7 @@ public class Goal_Heal : Goal_Base
 
         distance = Vector2.Distance(Agent.transform.position, player.transform.position);
 
-        CurrentPriority = MinDistanceToHeal < distance ? 0 : healPriority - (Stats.currentHealth/10);
+        CurrentPriority = MinDistanceToHeal < distance ? 0 : healPriority - (Stats.currentHealth/15);
 
     }
     public override void OnGoalActivated(Action_Base linkedAction)

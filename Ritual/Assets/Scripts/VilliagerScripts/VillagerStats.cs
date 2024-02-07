@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VillagerStats : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    public int maxHealth = 100;
     public int currentHealth;
 
     [Header("Events")]
