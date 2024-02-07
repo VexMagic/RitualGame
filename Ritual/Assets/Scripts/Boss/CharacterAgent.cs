@@ -31,7 +31,7 @@ public class CharacterAgent : MonoBehaviour
     public GameObject explotionToActivate;
     public HealthBar healthBar;
 
-    public float agentHealth = 50;
+    float agentHealth = 50;
     [SerializeField] float explotionRadius = 9f;
     [SerializeField] float projectileSpeed = 7f;
     [SerializeField] float shootCooldown = 1.5f;

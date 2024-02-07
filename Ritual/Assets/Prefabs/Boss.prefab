@@ -215,7 +215,6 @@ MonoBehaviour:
   redObjectToActivate: {fileID: 8605390565919909808}
   explotionToActivate: {fileID: 8605390566188394815}
   healthBar: {fileID: 0}
-  agentHealth: 100
   explotionRadius: 9
   projectileSpeed: 7
   shootCooldown: 1.5
