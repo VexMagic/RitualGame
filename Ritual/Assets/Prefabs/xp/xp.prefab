@@ -116,3 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 5
   playerTag: Player
+  onPickup: {fileID: 11400000, guid: 1155f109a6e75424787c1aaa06ea162f, type: 2}

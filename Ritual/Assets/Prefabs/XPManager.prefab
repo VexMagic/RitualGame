@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269793af77dc13849a6cf49b38b26cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnXp: {fileID: 11400000, guid: 1155f109a6e75424787c1aaa06ea162f, type: 2}
-  removeXP: {fileID: 11400000, guid: cd7f6a47f5e906841915620c209faf98, type: 2}
+  spawnXp: {fileID: 11400000, guid: cd7f6a47f5e906841915620c209faf98, type: 2}
+  removeXP: {fileID: 11400000, guid: 1155f109a6e75424787c1aaa06ea162f, type: 2}
 --- !u!114 &4110037878707457894
 MonoBehaviour:
   m_ObjectHideFlags: 0

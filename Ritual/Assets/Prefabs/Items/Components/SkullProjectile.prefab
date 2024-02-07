@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  damage: 5
+  damage: 50
   timeToLive: 5
   destoryOnCOll: 1
   tagToDamage: Villager
