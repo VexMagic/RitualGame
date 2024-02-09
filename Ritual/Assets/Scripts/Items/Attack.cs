@@ -6,21 +6,25 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] protected EventSO activateEvent;
     [SerializeField] private bool attackActive;
-    protected bool AttackActive {  get { return attackActive; } }
+    [SerializeField] private bool startActive;
+    protected bool AttackActive { get { return attackActive; } }
 
     protected virtual void OnEnable()
     {
-        activateEvent.Action += ActivateAttack;
+        if (!startActive)
+            activateEvent.Action += ActivateAttack;
     }
 
     protected virtual void OnDisable()
     {
-        activateEvent.Action -= ActivateAttack;
+        if (!startActive)
+            activateEvent.Action -= ActivateAttack;
     }
 
     protected virtual void Start()
     {
-        attackActive = false;
+        if (startActive)
+            attackActive = true;
     }
 
     private void ActivateAttack()

@@ -115,6 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateEvent: {fileID: 0}
+  attackActive: 0
+  startActive: 1
   tickDamage: 3
   tickFrequency: 0.5
   tagToUseEffectOn: test
+  animStartEvent: {fileID: 0}
