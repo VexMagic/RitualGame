@@ -119,5 +119,5 @@ MonoBehaviour:
   startActive: 1
   tickDamage: 3
   tickFrequency: 0.5
-  tagToUseEffectOn: test
+  tagToUseEffectOn: Villager
   animStartEvent: {fileID: 0}
