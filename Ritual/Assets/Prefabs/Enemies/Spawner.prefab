@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1545197892}
   - component: {fileID: 1545197893}
   - component: {fileID: 1545197896}
+  - component: {fileID: 1317744395}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 260a1b7b22176ad45b6cf732cce40ca9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,13 +107,16 @@ MonoBehaviour:
   altars:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyTypes:
   - {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
   - {fileID: 7618720989584002963, guid: c1c9a02c71a248c4db0ba83852fc0bb6, type: 3}
-  minSpawnTime: 1
-  maxSpawnTime: 1
-  spawnRateIncreaseInterval: 5
-  spawnTimer: 5
+  minSpawnTime: 2
+  maxSpawnTime: 7
+  spawnRateIncreaseInterval: 10
+  spawnTimer: 3
   canSpawn: 0
   spawnDistanceToPlayer: 7
   spawnDistanceToEnemy: 5
@@ -151,3 +155,29 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 3910557504288383585, guid: 0b52185a686071046a809eb4dc8ce077, type: 3}
   amountToPool: 50
+--- !u!61 &1317744395
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711116663873122292}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.04841137, y: -1.113451}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 16}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 9.222471, y: 9.60976}
+  m_EdgeRadius: 0
