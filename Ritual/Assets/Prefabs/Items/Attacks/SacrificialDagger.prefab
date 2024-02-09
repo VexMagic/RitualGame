@@ -51,7 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateEvent: {fileID: 11400000, guid: fa90729da7db6604e81b9abf66f2a9c5, type: 2}
   attackActive: 0
-  tickDamage: 5
+  startActive: 0
+  tickDamage: 50
   tickFrequency: 1
   tagToUseEffectOn: Villager
   animStartEvent: {fileID: 11400000, guid: 8ecc58ccd22f2d843bc41ac045bc5350, type: 2}

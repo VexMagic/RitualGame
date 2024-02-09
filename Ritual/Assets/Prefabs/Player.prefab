@@ -859,6 +859,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1347382354130109092, guid: a823439bc0f8f4d4d85062cf0bddc352, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347382354130109092, guid: a823439bc0f8f4d4d85062cf0bddc352, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347382354130109092, guid: a823439bc0f8f4d4d85062cf0bddc352, type: 3}
+      propertyPath: m_Offset.x
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a823439bc0f8f4d4d85062cf0bddc352, type: 3}
 --- !u!4 &953458773021324362 stripped
@@ -983,6 +995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CandleAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 4037947188759158079, guid: 8cff3c0120815a748a7d879eafdb583e, type: 3}
+      propertyPath: attackFrequency
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cff3c0120815a748a7d879eafdb583e, type: 3}
 --- !u!4 &7935531957957376872 stripped
@@ -997,6 +1013,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3418022645982551670}
     m_Modifications:
+    - target: {fileID: 5159235252429985028, guid: 1cbb99029c7288c44bdc76b3c094be05, type: 3}
+      propertyPath: distance
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5159235252429985029, guid: 1cbb99029c7288c44bdc76b3c094be05, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1102,6 +1122,18 @@ PrefabInstance:
     - target: {fileID: 4906895257503548450, guid: 6bfc1f431f610c24d95c3afbf07b4e06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906895257503548894, guid: 6bfc1f431f610c24d95c3afbf07b4e06, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906895257503548894, guid: 6bfc1f431f610c24d95c3afbf07b4e06, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906895257503548894, guid: 6bfc1f431f610c24d95c3afbf07b4e06, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4906895257503548895, guid: 6bfc1f431f610c24d95c3afbf07b4e06, type: 3}
       propertyPath: m_Name

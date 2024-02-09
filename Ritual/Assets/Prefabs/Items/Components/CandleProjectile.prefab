@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3188ca431d9a6428e7d6586262195d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   damage: 0
-  timeToLive: 2
+  timeToLive: 0.75
+  destoryOnCOll: 0
+  tagToDamage: 
   aoe: {fileID: 5106060447214960797, guid: 32b4090f42d6c654698326dcec3ff9d8, type: 3}
