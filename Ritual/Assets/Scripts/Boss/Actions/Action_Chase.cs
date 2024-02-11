@@ -7,7 +7,7 @@ public class Action_Chase : Action_Base
     List<System.Type> SupportedGoals = new List<System.Type>(new System.Type[] { typeof(Goal_Chase) });
 
     Goal_Chase ChaseGoal;
-    float movmentSpeed = 3f;
+    float movmentSpeed = 4.2f;
 
     public override List<System.Type> GetSupportedGoals()
     {

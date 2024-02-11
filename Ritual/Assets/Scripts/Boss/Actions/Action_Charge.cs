@@ -12,7 +12,7 @@ public class Action_Charge : Action_Base
     Goal_Chase ChaseGoal;
     float movmentSpeed = 90f;
     float cost = 2f;
-    float timer = 0f;
+    float timer = 0.1f;
     float chargeTime = 4.5f;
     bool charing = false;
 
@@ -24,20 +24,26 @@ public class Action_Charge : Action_Base
     public override float GetCost()
     {
 
+      
+        return cost;
+    }
+
+    public override void OnActivated(Goal_Base linkedGoal)
+    {
         float distance = Vector2.Distance(player.transform.position, this.transform.position);
-        if(distance > 8)
+        if (distance > 8)
         {
             charing = true;
-          
+
         }
         else
         {
-            charing = false;
-            timer = 0;
+
+
             cost = 2f;
         }
 
-        if(charing)
+        if (charing)
         {
             timer += Time.deltaTime;
             if (timer > chargeTime)
@@ -46,15 +52,13 @@ public class Action_Charge : Action_Base
             }
             else
             {
+
                 cost = 2f;
+                timer = 0;
+                charing = false;
             }
 
         }
-        return cost;
-    }
-
-    public override void OnActivated(Goal_Base linkedGoal)
-    {
         base.OnActivated(linkedGoal);
 
         // cache the chase goal
