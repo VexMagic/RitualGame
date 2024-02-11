@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 1031446190}
     - target: {fileID: 8605390564410707558, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
       propertyPath: healPerSec
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8605390564410707558, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
       propertyPath: movmentSpeed
