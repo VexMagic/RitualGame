@@ -156,6 +156,10 @@ public class CharacterAgent : MonoBehaviour
         Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
         projectileRb.velocity = direction * projectileSpeed;
 
+        //rotate projectiles towards vel
+        Vector2 v = projectileRb.velocity;
+        float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
 
