@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8043886058608576207, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043886058608576207, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1717350403
+      objectReference: {fileID: 0}
     - target: {fileID: 8711116663873122292, guid: 31ed7020623c7404488fd8791e8f026e, type: 3}
       propertyPath: m_Name
       value: Spawner Variant
