@@ -1086,8 +1086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64c5877dc526f8c4a8b8d2a77f6f22b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
-  magnetSpeed: 5
+  range: 2
+  magnetSpeed: 0.1
   xpLayer:
     serializedVersion: 2
     m_Bits: 64
