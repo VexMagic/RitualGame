@@ -56,3 +56,6 @@ TagManager:
   - name: Enemy
     uniqueID: 948839317
     locked: 0
+  - name: Attacks
+    uniqueID: 709524233
+    locked: 0
