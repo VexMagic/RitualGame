@@ -58,6 +58,7 @@ public class Villager : MonoBehaviour
     }
     void Start()
     {
+        ritual = GameObject.FindGameObjectWithTag("Ritual").transform;
 
         theTree = new DT(
         new DecisionBranch
