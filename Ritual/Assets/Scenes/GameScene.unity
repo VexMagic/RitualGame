@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687355ebc8b8ef841b331dfefc7d86c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 5
+  countdownTime: 25
   boss: {fileID: 1091501086}
   healthbar: {fileID: 1031446189}
 --- !u!4 &383199506
@@ -572,7 +572,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 16
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8605390564410707538, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
 --- !u!1 &906720718
 GameObject:
@@ -684,17 +685,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8605390564410707560, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
   m_PrefabInstance: {fileID: 807764024}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1091501087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8605390564410707538, guid: 6852c788c04209448b9bc8a1873b069a, type: 3}
-  m_PrefabInstance: {fileID: 807764024}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091501086}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76989d50103e5814f9fa87ceb3f52964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1091501107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 513928531406673984, guid: 51d24e9c341e82e41970f672563ddb7a, type: 3}
       propertyPath: stats
       value: 
-      objectReference: {fileID: 1091501087}
+      objectReference: {fileID: 1091501107}
     - target: {fileID: 513928531406673985, guid: 51d24e9c341e82e41970f672563ddb7a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
