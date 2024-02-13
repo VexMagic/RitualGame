@@ -25,7 +25,7 @@ public class VillagerStats : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         onDeath.Invoke(this.gameObject);
     }
